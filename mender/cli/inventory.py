@@ -50,6 +50,7 @@ def add_args(sub):
     pdevlist.add_argument('-a', '--attributes', default="id, updated", help='Csv attribute list to show')
     pdevlist.add_argument('-f', '--format', default="plain", help='Format Output')
     pdevlist.add_argument('-l', '--limit', default="500", help='Limit output')
+    pdevlist.add_argument('-p', '--page', default="1", help='Page number')
     pdevlist.set_defaults(invdevcommand='list')
 
     pgr = pinvsub.add_parser('group', help='Group commands')
@@ -164,7 +165,8 @@ def devices_list(opts):
             jsonprinter(rsp)
 
     # TODO add pagination (go through all pages)
-    url = inventory_url(opts.service, '/devices?per_page={}'.format(opts.limit))
+    url = inventory_url(opts.service, '/devices?per_page={}&page={}'.format(opts.limit,
+                                                                            opts.page))
     with api_from_opts(opts) as api:
         do_simple_get(api, url, printer=devlist_printer)
 
