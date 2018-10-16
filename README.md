@@ -66,3 +66,9 @@ curl -X'GET' ${MENDER_URL}/management/v1/inventory/devices -k -H "Authorization:
 # ?per_page=500&page=1
 ```
 
+Filter by mac_wlan0 (not working):
+
+```sh
+curl -G "https://mender.flotech.co/api/management/v1/inventory/devices" --data-urlencode 'mac_wlan0=60:64:05:bf:fa:49' -k -H "Authorization: Bearer $(cat usertoken)" -H 'Content-Type: application/json' | jq .
+#curl -G "https://mender.flotech.co/api/management/v1/inventory/devices" --data 'mac_wlan0=60:64:05:bf:fa:49' -k -H "Authorization: Bearer $(cat usertoken)" -H 'Content-Type: application/json' | jq .
+```
