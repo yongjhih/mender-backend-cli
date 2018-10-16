@@ -50,3 +50,19 @@ python3 ./setup.py install --user
 ```
 
 Make sure to have `~/.local/bin` in your `PATH`.
+
+or for Mac OS X:
+
+```
+export PATH="$PATH:${HOME}/Library/Python/3.6/bin"
+```
+
+## Scripts
+
+Devices:
+
+```sh
+curl -X'GET' ${MENDER_URL}/management/v1/inventory/devices -k -H "Authorization: Bearer $(cat usertoken)"
+# ?per_page=500&page=1
+```
+

@@ -1,2 +1,5 @@
 __pycache__/
 usertoken
+dist/
+build/
+*.egg-info/
